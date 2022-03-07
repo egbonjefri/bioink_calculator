@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Bio-ink Calculator</title>
+  </head>
+  <body>
+    <h1 class='text-center my-1'>Bio-ink/Alginate Dilution Calculator</h1>
+    <p class='text-center my-1'><em>Created by <a class="text-decoration-underline text-dark" target='_blank' href="https://twitter.com/osagiej3e">Jeffery Osagie</a> and <a class="text-decoration-underline text-dark" target='_blank' href="https://twitter.com/The_West_Lab">Dr. A. West</a></em></p>
+    <form class='container-fluid'>
+        <div class='row my-5'>
+            <div class='col-lg'>
+                <h3>Input Data</h3>
+                <small id="userguide" class="form-text text-muted">All fields marked with an asterisk require a valid numeric input.</small>
+                <small id="userguide" class="form-text text-muted">Fields highlighted with green should not be changed normally.</small>
+                <small id="userguide" class="form-text text-muted">Very important to double-check fields highlighted in red.</small>
+
+
+        <div class="form-group col my-3">
+          <label for="inputnumsubstrate" class='my-2'>Number of substrates:</label>
+          <input type="number"  id="inputsubstratenum" class="form-control my-1" aria-describedby="inputsubstratenumber" min="0" required value='1'>
+          <label for="inputvolsubstrate" class='my-2'>Volume per substrate (mL):</label>
+          <input type="number"  id="inputsubstratevol" class="form-control my-1" aria-describedby="inputsubstratevolume" min="0" required value='1'>
+          <label for="inputmansubstrate" class='my-2'>Manual volume entry (mL):</label>
+          <input type="number"  id="inputsubstrateman" class="form-control my-1" aria-describedby="inputsubstratemanual" value='0' required min="0">
+          <small id="calculationguide" class="form-text text-muted">If field is left blank, total volume will be calculated by multiplying number and volume of substrates.</small>
+          <div class='my-3'>
+            <br>
+              <h6><em>Alginate</em></h6>
+          <label for="inputinialginateconc" class='my-2'>Stock alginate concentration (%)</label>
+          <input type="number" id="inputinialginateconc" class="form-control my-1" aria-describedby="inputinialginateconcentration" min="0"  value='3'>
+          <label for="inputfinalginateconc" class='my-2'><strong>*Final alginate concentration (%):</strong></label>
+          <input type="number" id="inputfinalginateconc" class="form-control inpfinalg my-1" aria-describedby="inputfinalginateconc" min="0"  step="0.1" placeholder='0.5'>
+          <small id="alginateError" class="alginateError">This field cannot be blank, enter a final alginate concentration.</small>
+          <label for="inputalginatesodiumcont" class='my-2'>Alginate sodium content (mM):</label>
+          <input type="number" id="inputalgsodcont" class="form-control my-1" aria-describedby="inputalginatesodiumcontent" min="0"  value='145'>
+          <label for="inputalgbiccont" class='my-2'>Alginate bicarbonate content (mM):</label>
+          <input type="number" id="inputalgibiccont" class="form-control my-1" aria-describedby="inputalginatebicarcontent" min="0"  value='5'>
+          </div>
+          <div class='my-3'>
+            <br>
+              <h6><em>RGD-Alginate</em></h6>
+          <label for="inputinirgdconc" class='my-2'>Stock RGD-alginate concentration (%):</label>
+          <input type="number" id="inputinirgdconc" class="form-control my-1" aria-describedby="inputinirgdalgiconcen" min="0"  value='3'>
+          <label for="inputinirgdcont" class='my-2'>Stock RGD content (µmol/mg):</label>
+          <input type="number" id="inputinirgdcont" class="form-control my-1" aria-describedby="inputinirgdalgicont" min="0"  step="0.001" value='0.014'>
+          <label for="inputfinrgdcont" class='my-2'><strong>*Final RGD content (µM):</strong></label>
+          <input type="number" id="inputfinrgdcont" class="form-control inpfinrgd my-1" aria-describedby="inputfinrgdalgicontent" min="0"  placeholder='70'>
+          <small id="rgdError" class="rgdError">This field cannot be blank, enter a final rgd-alginate content.</small>
+          <label for="inputrgdsodcont" class='my-2'>RGD-alginate sodium content (mM):</label>
+          <input type="number" id="inputrgdsodcont" class="form-control my-1" aria-describedby="inputrgdsodcont" min="0"  value='145'>
+          <label for="inputrgdbiccont" class='my-2'>RGD-alginate bicarbonate content (mM):</label>
+          <input type="number" id="inputrgdbiccont" class="form-control my-1" aria-describedby="inputrgdbiccont" min="0"  value='5'>
+
+          </div>
+          <div class='my-3'>
+            <br>
+              <h6><em>Fibrinogen</em></h6>
+          <label for="inputinifibconc" class='my-2'><strong>*Stock fibrinogen concentration (mg/mL):</strong></label>
+          <input type="number" id="inputinifibconc" class="form-control inpinifib my-1" aria-describedby="inputinifibconc" min="0"  placeholder='20'>
+          <small id="iniFibError" class="iniFibError">This field cannot be blank, enter stock fibrinogen concentration.</small>
+          <label for="inputfinfibconc" class='my-2'><strong>*Final fibrinogen concentration (mg/mL):</strong></label>
+          <input type="number" id="inputfinfibconc" class="form-control inpfinfib my-1" aria-describedby="inputfinfibconc" min="0"  placeholder='5'>
+          <small id="finFibError" class="finFibError">This field cannot be blank, enter a final fibrinogen concentration.</small>
+          <label for="inputfibsodcont" class='my-2'>Fibrinogen sodium content (mM):</label>
+          <input type="number" id="inputfibsodcont" class="form-control my-1" aria-describedby="inputfibsodcont" min="0"  value='145'>
+          <label for="inputfibbiccont" class='my-2'>Fibrinogen bicarbonate content (mM):</label>
+          <input type="number" id="inputfibbiccont" class="form-control my-1" aria-describedby="inputfibbiccont" min="0"  value='5'>
+          </div>
+          <div class='my-3'>
+            <br>
+              <h6><em>Collagen</em></h6>
+          <label for="inputinicolconc" class='my-2'>Stock collagen concentration (mg/mL):</label>
+          <input type="number" id="inputinicolconc" class="form-control my-1" aria-describedby="inputinicolconc" min="0"  value='3.56'>
+          <label for="inputfincolconc" class='my-2'><strong>*Final collagen concentration (mg/mL):</strong></label>
+          <input type="number" id="inputfincolconc" class="form-control inpfincol my-1" aria-describedby="inputfincolconc" min="0"  placeholder='1'>
+          <small id="collagenError" class="collagenError">This field cannot be blank, enter a final collagen concentration.</small>
+          <label for="inputcolacidconc" class='my-2'>Collagen acid concentration (mM):</label>
+          <input type="number" id="inputcolacidconc" class="form-control my-1" aria-describedby="inputcolacidconc" min="0"  value='20'>
+          <label for="inputconcbicar" class='my-2'>Concentrated bicarbonate (mM):</label>
+          <input type="number" id="inputconcbicar" class="form-control my-1" aria-describedby="inputconcbicar" min="0"  value='596'>
+          <label for="inputfinbicarb" class='my-2'>Final bicarbonate concentration (mM):</label>
+          <input type="number" id="inputfinbicarb" class="form-control my-1" aria-describedby="inputfinbicarb" min="0"  value='5'>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block my-5">Calculate</button>
+
+        </div>
+        </div>
+        <div class='col-lg'>
+            <h3>Internal Calculations/Constants</h3>
+
+    <div class="form-group col-lg my-3">
+      <label for="outputtotalvol" class='my-2'>Total Volume (µL):</label>
+      <input type="number" id="totalvol" class="form-control-plaintext my-1" aria-describedby="totalvol" readonly>
+      <label for="outputrgdneeded" class='my-2'>RGD needed (µMoles):</label>
+      <input type="number" id="outputrgdneeded" class="form-control-plaintext my-1" aria-describedby="outputrgdneeded" readonly>
+      <label for="outputrgdneededmg" class='my-2'>RGD-alginate needed (mg):</label>
+      <input type="number" id="outputrgdneededmg" class="form-control-plaintext my-1" aria-describedby="outputrgdneededmg" readonly>
+      <label for="outputrgdneededperc" class='my-2'>RGD alginate concentration (%)</label>
+      <input type="number" id="outputrgdneededperc" class="form-control-plaintext my-1" aria-describedby="outputrgdneededperc" readonly>
+      <label for="outputalgiconc" class='my-2'>Standard alginate concentration (%):</label>
+      <input type="number" id="outputalgiconc" class="form-control-plaintext my-1" aria-describedby="outputalgiconc" readonly>
+      <label for="outputalgiused" class='my-2'>Alginate used (mg):</label>
+      <input type="number" id="outputalgiused" class="form-control-plaintext my-1" aria-describedby="outputalgiused" readonly>
+      <label for="ouputfibriused" class='my-2'>Fibrinogen used (mg):</label>
+      <input type="number" id="ouputfibriused" class="form-control-plaintext my-1" aria-describedby="ouputfibriused" readonly>
+      <label for="outputcolused" class='my-2'>Collagen used (mg):</label>
+      <input type="number" id="outputcolused" class="form-control-plaintext my-1" aria-describedby="outputcolused" readonly>
+      <label for="outputfinbicarbneeded" class='my-2'>Final µMoles bicarbonate needed:</label>
+      <input type="number" id="outputfinbicarbneeded" class="form-control-plaintext my-1" aria-describedby="outputfinbicarbneeded" readonly>
+      <label for="ouputcolacid" class='my-2'>µMoles from acidic collagen:</label>
+      <input type="number" id="ouputcolacid" class="form-control-plaintext my-1" aria-describedby="ouputcolacid" readonly>
+      <label for="ouputmatrixbicarb" class='my-2'>µMoles bicarbonate added with matrix:</label>
+      <input type="number" id="ouputmatrixbicarb" class="form-control-plaintext my-1" aria-describedby="ouputmatrixbicarb" readonly>
+      <label for="outputbicarbneeded" class='my-2'>µMoles bicarbonate to add:</label>
+      <input type="number" id="outputbicarbneeded" class="form-control-plaintext my-1" aria-describedby="outputbicarbneeded" readonly>
+      <label for="outputsodiumadded" class='my-2'>µMoles sodium added:</label>
+      <input type="number" id="outputsodiumadded" class="form-control-plaintext my-1" aria-describedby="outputsodiumadded" readonly>
+      <label for="outputsodiumneeded" class='my-2'>µMoles sodium needed:</label>
+      <input type="number" id="outputsodiumneeded" class="form-control-plaintext my-1" aria-describedby="outputsodiumneeded" readonly>
+      <label for="outputsodiumtoadd" class='my-2'>µMoles sodium to add:</label>
+      <input type="number" id="outputsodiumtoadd" class="form-control-plaintext my-1" aria-describedby="outputsodiumtoadd" readonly>
+<div class='my-5'>
+    <h3>Costs</h3>
+    <label for="costofalginatemg" class='my-2'>Regular Alginate ($/mg):</label>
+    <input type="number" id="costofalginatemg" class="form-control my-1" aria-describedby="costofalginatemg" min="0" disabled value='1.14'>
+    <label for="costofrgdalginatemg" class='my-2'>RGD alginate ($/mg):</label>
+    <input type="number" id="costofrgdalginatemg" class="form-control my-1" aria-describedby="costofrgdalginatemg" min="0" disabled  value='2.15'>
+    <label for="costoffibrinogenmg" class='my-2'>Fibrinogen ($/mg):</label>
+    <input type="number" id="costoffibrinogenmg" class="form-control my-1" aria-describedby="costoffibrinogenmg" min="0" disabled  value='1'>
+    <label for="costofcollagenmg" class='my-2'>Collagen ($/mg):</label>
+    <input type="number" id="costofcollagenmg" class="form-control my-1" aria-describedby="costofcollagenmg" min="0" disabled  value='2.5'>
+    <label for="costofalginate" class='my-2'>Regular Alginate cost:</label>
+    <input type="text" id="costofalginate" class="form-control-plaintext my-1" aria-describedby="costofalginate" readonly>
+    <label for="costofrgdalginate" class='my-2'>RGD alginate cost:</label>
+    <input type="text" id="costofrgdalginate" class="form-control-plaintext my-1" aria-describedby="costofrgdalginate"  readonly>
+    <label for="costoffribrinogen" class='my-2'>Fibrinogen cost:</label>
+    <input type="text" id="costoffribrinogen" class="form-control-plaintext my-1" aria-describedby="costoffribrinogen"  readonly>
+    <label for="costofcollagen" class='my-2'>Collagen cost:</label>
+    <input type="text" id="costofcollagen" class="form-control-plaintext my-1" aria-describedby="costofcollagen" readonly>
+</div>
+    </div>
+    </div>
+
+
+    <div class='col-lg'>
+        <h3 id="calculatedVolumes">Calculated Volumes</h3>
+
+<div class="form-group col-lg my-3">
+  <label for="calcstandalg" class='my-2'>Standard alginate (µL):</label>
+  <input type="number" id="calcstandalg" class="form-control my-1" aria-describedby="calcstandalg" disabled>
+  <label for="calcrgdalg" class='my-2'>RGD-alginate (µL):</label>
+  <input type="number" id="calcrgdalg" class="form-control my-1" aria-describedby="calcrgdalg"disabled>
+  <label for="calccollagen" class='my-2'>Collagen (µL):</label>
+  <input type="number" id="calccollagen" class="form-control my-1" aria-describedby="calccollagen" disabled>
+  <label for="calcfibrinogen" class='my-2'>Fibrinogen (µL):</label>
+  <input type="number" id="calcfibrinogen" class="form-control my-1" aria-describedby="calcfibrinogen" disabled>
+  <label for="calcwater" class='my-2'>Water (µL):</label>
+  <input type="number" id="calcwater" class="form-control my-1" aria-describedby="calcwater" disabled>
+  <label for="calcbicarb" class='my-2'>5% Bicarbonate (µL):</label>
+  <input type="number" id="calcbicarb" class="form-control my-1" aria-describedby="calcbicarb" disabled>
+  <label for="calcnacl" class='my-2'>1.5 M NaCl (µL):</label>
+  <input type="number" id="calcnacl" class="form-control my-1" aria-describedby="calcnacl" disabled>
+
+
+</div>
+<h3 class='my-4'>Actual Volumes (Standard Alginate)</h3>
+
+<div class="form-group col-lg my-3">
+    <label for="actustandalg" class='my-2'>Standard alginate (µL):</label>
+    <input type="number" id="actustandalg" class="form-control my-1" placeholder='Enter alginate volume actually pipetted' aria-describedby="actustandalg" required>
+    <label for="acturgdalg" class='my-2'>RGD-alginate (µL):</label>
+    <input type="number" id="acturgdalg" class="form-control my-1" aria-describedby="acturgdalg"disabled>
+    <label for="actcollagen" class='my-2'>Collagen (µL):</label>
+    <input type="number" id="actcollagen" class="form-control my-1" aria-describedby="actcollagen" disabled>
+    <label for="actfibrinogen" class='my-2'>Fibrinogen (µL):</label>
+    <input type="number" id="actfibrinogen" class="form-control my-1" aria-describedby="actfibrinogen" disabled>
+    <label for="actwater" class='my-2'>Water (µL):</label>
+    <input type="number" id="actwater" class="form-control my-1" aria-describedby="actwater" disabled>
+    <label for="actbicarb" class='my-2'>5% Bicarbonate (µL):</label>
+    <input type="number" id="actbicarb" class="form-control my-1" aria-describedby="actbicarb" disabled>
+    <label for="actnacl" class='my-2'>1.5 M NaCl (µL):</label>
+    <input type="number" id="actnacl" class="form-control my-1" aria-describedby="actnacl" disabled>
+    <label for="totalcalvol" class='my-2'>Total volume (µL):</label>
+    <input type="number" id="totalcalvol" class="form-control-plaintext my-1" aria-describedby="totalcalvol" readonly>
+  
+  </div>
+  <h3 class='my-4'>Actual Volumes (RGD-Alginate)</h3>
+
+<div class="form-group col-lg my-3">
+    <label for="secactustdalg" class='my-2'>Standard alginate (µL):</label>
+    <input type="number" id="secactustdalg" class="form-control my-1" aria-describedby="secactustdalg" disabled>
+    <label for="secacturgdalg" class='my-2'>RGD-alginate (µL):</label>
+    <input type="number" id="secacturgdalg" class="form-control my-1" placeholder='Enter RGD-alginate volume pipetted' aria-describedby="secacturgdalg" required>
+    <label for="secactucollagen" class='my-2'>Collagen (µL):</label>
+    <input type="number" id="secactucollagen" class="form-control my-1" aria-describedby="secactucollagen" disabled>
+    <label for="secactufibrinogen" class='my-2'>Fibrinogen (µL):</label>
+    <input type="number" id="secactufibrinogen" class="form-control my-1" aria-describedby="secactufibrinogen" disabled>
+    <label for="secactwater" class='my-2'>Water (µL):</label>
+    <input type="number" id="secactwater" class="form-control my-1" aria-describedby="secactwater" disabled>
+    <label for="secactbicarb" class='my-2'>5% Bicarbonate (µL):</label>
+    <input type="number" id="secactbicarb" class="form-control my-1" aria-describedby="secactbicarb" disabled>
+    <label for="secactnacl" class='my-2'>1.5 M NaCl (µL):</label>
+    <input type="number" id="secactnacl" class="form-control my-1" aria-describedby="secactnacl" disabled>
+    <label for="totalrgdvol" class='my-2'>Total volume (µL):</label>
+    <input type="number" id="totalrgdvol" class="form-control-plaintext my-1" aria-describedby="totalrgdvol" readonly>
+  
+  
+  </div>
+</div>
+
+</div>
+    </form>
+<div>
+    <h3 class='text-center'>About calculator</h3>
+    <p class='mx-5'>An Excel based calculator was developed and used to calculate volumes of each component in the bio-ink. 
+        The inputs for the calculator were the desired final volume of bio-ink, and the stock and final concentrations of each matrix component. 
+        The calculator then calculated the volume of 7.5% NaHCO3, 1.5 M NaCl, and ddH2O to precisely neutralise the acid from the collagen and achieve final salt concentrations of 145 mM NaCl and 5 mM NaHCO3.
+         The dilution calculator also corrected for micro-volume errors associated with pipetting viscous alginates by recalculating total volumes based on actual pipetted volumes. 
+         This ensured standardization and significantly minimized variations between print runs.</p>
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src='./resources/script/script.js'></script>
+  </body>
+</html>

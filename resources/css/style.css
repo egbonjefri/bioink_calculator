@@ -1,0 +1,78 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+
+a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+  font-family: Roboto, 'Font Awesome\ 5 Pro', sans-serif;  
+}
+::-webkit-scrollbar {
+  width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  background: #888;
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  }
+  ::-webkit-input-placeholder {
+  font-style: italic;
+  font-family: Roboto, 'Font Awesome\ 5 Pro', sans-serif;  
+  }
+  
+
+  .form-control-plaintext {
+    font-weight: bold;
+  }
+
+
+#inputinialginateconc,
+#inputalgsodcont,
+#inputalgibiccont,
+#inputinirgdconc,
+#inputrgdsodcont,
+#inputrgdbiccont,
+#inputfibsodcont,
+#inputfibbiccont,
+#inputcolacidconc,
+#inputconcbicar,
+#inputfinbicarb{
+  background-color: rgba(185, 236, 181, 0.438)!important;
+ 
+}
+#inputsubstrateman{
+  background-color: beige!important;
+
+}
+  #inputinirgdcont,
+  #inputinicolconc {
+    background-color:  rgba(247, 108, 108, 0.589)!important;
+  }
+
+.alginateError,
+.rgdError,
+.iniFibError,
+.finFibError,
+.collagenError{
+  color: red;
+  display: none;
+}
+.errorActive{
+  background-color: rgba(245, 207, 207, 0.575) !important;
+  outline: solid 2px red;
+
+}
