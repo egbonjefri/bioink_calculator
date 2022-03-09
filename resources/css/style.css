@@ -123,9 +123,10 @@ a:hover {
   font-family: Roboto, "Font Awesome 5 Pro", sans-serif;
 }
 
-.form-control-plaintext,.bolded {
+.form-control-plaintext,.newbolded {
   font-weight: bold !important;
 }
+
 
 #inputinialginateconc,
 #inputalgsodcont,
@@ -164,11 +165,7 @@ a:hover {
   outline: solid 2px red;
 }
 
-.myButton:active {
-  box-shadow: 2px 2px 2px #777;
-  border-bottom: 1px solid #c0392b;
-  transform: translateY(3px);
-}
+
 
 @media (max-width: 1120px) {
   #regForm fieldset {

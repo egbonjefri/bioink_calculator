@@ -1,10 +1,4 @@
-/*
-let alginate;
-let rgd;
-let collagen;
-let finfibrinogen;
-let fibrinogen;
-*/
+
 
 $(document).ready(function(){
   
@@ -107,131 +101,7 @@ $(document).ready(function(){
  var audio  = new Audio('https://www.fesliyanstudios.com/soundeffects-download.php?id=390');
  var reseting = new Audio('https://www.fesliyanstudios.com/soundeffects-download.php?id=396')
  
- function alginateError() {
-     if (inputfinalginateconc === '') {
-        $('.alginateError').show();
-        $('.inpfinalg').addClass('errorActive');
-         $("#inputinialginateconc").get(0).scrollIntoView();
-        
- }
- else if (inputfinalginateconc <= 0) {
-    $('.alginateError').html('You need to enter a number greater than zero.');
-    $('.alginateError').show();
-    $('.inpfinalg').addClass('errorActive');
-    $("#inputinialginateconc").get(0).scrollIntoView();
- }
- else if (inputfinalginateconc > inputinialginateconc) {
-     $('.alginateError').html('Final Alginate concentration cannot be greater than initial.');
-     $('.alginateError').show();
-     $('.inpfinalg').addClass('errorActive');
-     $("#inputinialginateconc").get(0).scrollIntoView();
- 
- 
- }
- else {
-    $('.inpfinalg').removeClass('errorActive');
-    $('.alginateError').hide(); 
-    alginate = true;
-    return true
-    
- }
-  }
- 
-  function rgdError() {
-     if (inputfinrgdcont === '') {
-        $('.rgdError').show();
-        $('.inpfinrgd').addClass('errorActive');
-        $("#inputinirgdcont").get(0).scrollIntoView();
- }
-     else if (inputfinrgdcont <= 0) {
-     $('.rgdError').html('You need to enter a number greater than zero.');
-      $('.rgdError').show();
-      $('.inpfinalg').addClass('errorActive');
-      $("#inputinirgdcont").get(0).scrollIntoView();
- }
- else {
-    $('.inpfinrgd').removeClass('errorActive');
-    $('.rgdError').hide(); 
-    rgd = true;
-    return true
- }
-  }
- 
-  function iniFibError() {
-     if (inputinifibconc === '') {
-        $('.iniFibError').show();
-        $('.inpinifib').addClass('errorActive');
-        $("#inputrgdbiccont").get(0).scrollIntoView();
- }
- else if (inputinifibconc <= 0) {
-    $('.iniFibError').html('You need to enter a number greater than zero.');
-    $('.iniFibError').show();
-    $('.inpinifib').addClass('errorActive');
-    $("#inputrgdbiccont").get(0).scrollIntoView();
- }
- else {
-    $('.inpinifib').removeClass('errorActive');
-    $('.iniFibError').hide(); 
-    fibrinogen = true;
-    return true
- }
-  }
- 
-  function finFibError() {
- 
-  if (inputfinfibconc > inputinifibconc) {
-     $('.finFibError').html('Final Fibrinogen concentration cannot be greater than initial.');
-     $('.finFibError').show();
-     $('.inpfinfib').addClass('errorActive');
-     $("#inputinifibconc").get(0).scrollIntoView();
- }
- if (inputfinfibconc === '') {
-     $('.finFibError').show();
-     $('.inpfinfib').addClass('errorActive');
-     $("#inputinifibconc").get(0).scrollIntoView();
- }
- else if (inputfinfibconc <= 0) {
-    $('.finFibError').html('You need to enter a number greater than zero.');
-    $('.finFibError').show();
-    $('.inpfinfib').addClass('errorActive');
-    $("#inputinifibconc").get(0).scrollIntoView();
- }
- 
- else {
-    $('.inpfinfib').removeClass('errorActive');
-    $('.finFibError').hide(); 
-    finfibrinogen = true;
-    return true
- }
-  }
- 
- 
-  function collagenError() {
-     if (inputfincolconc === '') {
-        $('.collagenError').show();
-        $('.inpfincol').addClass('errorActive');
-        $("#inputinicolconc").get(0).scrollIntoView();
- }
- else if (inputfincolconc <= 0) {
-    $('.collagenError').html('You need to enter a number greater than zero.');
-    $('.collagenError').show();
-    $('.inpfincol').addClass('errorActive');
-    $("#inputinicolconc").get(0).scrollIntoView();
- }
- else if (inputfincolconc > inputinicolconc) {
-     $('.collagenError').html('Final collagen concentration cannot be greater than initial.');
-     $('.collagenError').show();
-     $('.inpfincol').addClass('errorActive');
-     $("#inputinicolconc").get(0).scrollIntoView();
- }
- else {
-    $('.inpfincol').removeClass('errorActive');
-    $('.collagenError').hide(); 
-    collagen = true;
-    return true
- }
-  }
- 
+
  
  
   $("#nextBtn").click(function(event){
@@ -328,16 +198,136 @@ $(document).ready(function(){
       $('#outputsodiumtoadd').val(outputsodiumtoadd.toFixed(2));
  
     
-      $('#totalcalvol').val(Math.floor(totalcalvol*1000));  
-     ; 
-     ;
+    //  $('#totalcalvol').val(Math.floor(totalcalvol*1000));  
     
-     
+   
       event.preventDefault();
  
    });
    
+   function alginateError() {
+      if (inputfinalginateconc === '') {
+         $('.alginateError').show();
+         $('.inpfinalg').addClass('errorActive');
+          $("#inputinialginateconc").get(0).scrollIntoView();
+         
+  }
+  else if (inputfinalginateconc <= 0) {
+     $('.alginateError').html('You need to enter a number greater than zero.');
+     $('.alginateError').show();
+     $('.inpfinalg').addClass('errorActive');
+     $("#inputinialginateconc").get(0).scrollIntoView();
+  }
+  else if (inputfinalginateconc > inputinialginateconc) {
+      $('.alginateError').html('Final Alginate concentration cannot be greater than initial.');
+      $('.alginateError').show();
+      $('.inpfinalg').addClass('errorActive');
+      $("#inputinialginateconc").get(0).scrollIntoView();
+  
+  
+  }
+  else {
+     $('.inpfinalg').removeClass('errorActive');
+     $('.alginateError').hide(); 
+     return true
+     
+  }
+   }
+  
+   function rgdError() {
+      if (inputfinrgdcont === '') {
+         $('.rgdError').show();
+         $('.inpfinrgd').addClass('errorActive');
+         $("#inputinirgdcont").get(0).scrollIntoView();
+  }
+      else if (inputfinrgdcont <= 0) {
+      $('.rgdError').html('You need to enter a number greater than zero.');
+       $('.rgdError').show();
+       $('.inpfinalg').addClass('errorActive');
+       $("#inputinirgdcont").get(0).scrollIntoView();
+  }
+  else {
+     $('.inpfinrgd').removeClass('errorActive');
+     $('.rgdError').hide(); 
+     return true
+  }
+   }
+  
+   function iniFibError() {
+      if (inputinifibconc === '') {
+         $('.iniFibError').show();
+         $('.inpinifib').addClass('errorActive');
+         $("#inputrgdbiccont").get(0).scrollIntoView();
+  }
  
+  else if (inputinifibconc <= 0) {
+     $('.iniFibError').html('You need to enter a number greater than zero.');
+     $('.iniFibError').show();
+     $('.inpinifib').addClass('errorActive');
+     $("#inputrgdbiccont").get(0).scrollIntoView();
+  }
+  else {
+     $('.inpinifib').removeClass('errorActive');
+     $('.iniFibError').hide(); 
+     return true
+  }
+   }
+  
+   function finFibError() {
+      if (inputfinfibconc >= inputinifibconc) {
+         $('.finFibError').html('Final Fibrinogen concentration cannot be greater than initial.');
+         $('.finFibError').show();
+         $('.inpfinfib').addClass('errorActive');
+         $("#inputinifibconc").get(0).scrollIntoView();
+      }
+         
+ 
+   if (inputfinfibconc === '') {
+      $('.finFibError').show();
+      $('.inpfinfib').addClass('errorActive');
+      $("#inputinifibconc").get(0).scrollIntoView();
+  }
+  
+  else if (inputfinfibconc <= 0) {
+     $('.finFibError').html('You need to enter a number greater than zero.');
+     $('.finFibError').show();
+     $('.inpfinfib').addClass('errorActive');
+     $("#inputinifibconc").get(0).scrollIntoView();
+  }
+ 
+  else {
+     $('.inpfinfib').removeClass('errorActive');
+     $('.finFibError').hide(); 
+     return true
+  }
+   }
+  
+  
+   function collagenError() {
+      if (inputfincolconc === '') {
+         $('.collagenError').show();
+         $('.inpfincol').addClass('errorActive');
+         $("#inputinicolconc").get(0).scrollIntoView();
+  }
+  else if (inputfincolconc <= 0) {
+     $('.collagenError').html('You need to enter a number greater than zero.');
+     $('.collagenError').show();
+     $('.inpfincol').addClass('errorActive');
+     $("#inputinicolconc").get(0).scrollIntoView();
+  }
+  else if (inputfincolconc > inputinicolconc) {
+      $('.collagenError').html('Final collagen concentration cannot be greater than initial.');
+      $('.collagenError').show();
+      $('.inpfincol').addClass('errorActive');
+      $("#inputinicolconc").get(0).scrollIntoView();
+  }
+  else {
+     $('.inpfincol').removeClass('errorActive');
+     $('.collagenError').hide(); 
+     return true
+  }
+   }
+  
  
  
    $("#actustandalg").keyup(function(){
@@ -384,93 +374,106 @@ $(document).ready(function(){
  });
  
  
- var current_fs, next_fs, previous_fs;
- var animating;
- $(".next").click(function () {
-   if (!tester()) return false;
-   animating = true;
-   current_fs = $(this).parent();
-   next_fs = $(this).parent().next();
-   $(".circle").eq($("fieldset").index(next_fs)).addClass("active");
-   $('.progress').css('width', '50%');
-   next_fs.show();
+var current_fs, next_fs, previous_fs;
+var animating;
+$(".next").click(function () {
+  if (!tester()) return false;
+  animating = true;
+  current_fs = $(this).parent();
+  next_fs = $(this).parent().next();
+  $(".circle").eq($("fieldset").index(next_fs)).addClass("active");
+  $('.progress').css('width', '50%');
+  next_fs.show();
+  audio.load();
+  audio.play();
+ current_fs.animate({
+   opacity: 0,
+   marginLeft: "50%",
+ }, 250, function () {
    current_fs.hide();
-   audio.load();
-   audio.play();
-   $("#progress").get(0).scrollIntoView();
    animating = false;
- 
+ } );
+ $("#progress").get(0).scrollIntoView();
+});
+
+$(".previous").click(function () {
+  if (animating) return false;
+  animating = true;
+
+  current_fs = $(this).parent();
+  previous_fs = $(this).parent().prev();
+  $(".circle")
+    .eq($("fieldset").index(current_fs))
+    .removeClass("active");
+    previous_fs.css({
+      opacity: 1,
+      marginLeft: "auto"
+    });
+    $('.progress').css('width', '0%');
+
+      previous_fs.show();
+
+  $("#inputdata").get(0).scrollIntoView();
+  current_fs.hide();
+
+  animating = false;
+
+});
+$(".proceed").click(function () {
+  if (animating) return false;
+  animating = true;
+
+  current_fs = $(this).parent();
+  next_fs = $(this).parent().next();
+  $(".circle").eq($("fieldset").index(next_fs)).addClass("active");
+  next_fs.show();
+  current_fs.hide();
+  audio.load();
+  audio.play();
+  $('.progress').css('width', '100%');
+
+  $("#progress").get(0).scrollIntoView();
+  animating = false;
+
+});
+$(".back").click(function () {
+  if (animating) return false;
+  animating = true;
+
+  current_fs = $(this).parent();
+  previous_fs = $(this).parent().prev();
+  $(".circle").eq($("fieldset").index(next_fs)).addClass("active");
+  previous_fs.show();
+  current_fs.hide();
+  $("#internalcalc").get(0).scrollIntoView();
+  $('.progress').css('width', '50%');
+  animating = false;
+
+});
+$(".reset").click(function () {
+  current_fs = $(this).parent();
+  newprevious = $(this).parent().prev();
+  previous_fs = $(this).parent().prev().prev();
+  previous_fs.show();
+  current_fs.hide();
+  reseting.load();
+  reseting.play();
+  $(".circle")
+  .eq($("fieldset").index(current_fs))
+  .removeClass("active");
+  $(".circle")
+  .eq($("fieldset").index(newprevious))
+  .removeClass("active");
+  previous_fs.css({
+   opacity: 1,
+   marginLeft: "auto"
  });
- 
- $(".previous").click(function () {
-   if (animating) return false;
-   animating = true;
- 
-   current_fs = $(this).parent();
-   previous_fs = $(this).parent().prev();
-   $(".circle")
-     .eq($("fieldset").index(current_fs))
-     .removeClass("active");
- 
-   previous_fs.show();
-   current_fs.hide();
-   $('.progress').css('width', '0%');
- 
-   $("#inputinialginateconc").get(0).scrollIntoView();
-   animating = false;
- 
- });
- $(".proceed").click(function () {
-   if (animating) return false;
-   animating = true;
- 
-   current_fs = $(this).parent();
-   next_fs = $(this).parent().next();
-   $(".circle").eq($("fieldset").index(next_fs)).addClass("active");
-   next_fs.show();
-   current_fs.hide();
-   audio.load();
-   audio.play();
-   $('.progress').css('width', '100%');
- 
-   $("#progress").get(0).scrollIntoView();
-   animating = false;
- 
- });
- $(".back").click(function () {
-   if (animating) return false;
-   animating = true;
- 
-   current_fs = $(this).parent();
-   previous_fs = $(this).parent().prev();
-   $(".circle").eq($("fieldset").index(next_fs)).addClass("active");
-   previous_fs.show();
-   current_fs.hide();
-   $("#internalcalc").get(0).scrollIntoView();
-   $('.progress').css('width', '50%');
-   animating = false;
- 
- });
- $(".reset").click(function () {
-   current_fs = $(this).parent();
-   newprevious = $(this).parent().prev();
-   previous_fs = $(this).parent().prev().prev();
-   previous_fs.show();
-   current_fs.hide();
-   reseting.load();
-   reseting.play();
-   $(".circle")
-   .eq($("fieldset").index(current_fs))
-   .removeClass("active");
-   $(".circle")
-   .eq($("fieldset").index(newprevious))
-   .removeClass("active");
-   $("#inputinialginateconc").get(0).scrollIntoView();
-   $('.progress').css('width', '0%');
- 
-   animating = false;
- 
- });
+   $("#inputdata").get(0).scrollIntoView();
+  $('.progress').css('width', '0%');
+
+  animating = false;
+
+});
  
  
  

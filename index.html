@@ -26,7 +26,7 @@
        </div>  
     <!-- One "tab" for each step in the form: -->
     <fieldset class="tab my-5">
-        <h3>Input Data</h3>
+        <h3 id="inputdata">Input Data</h3>
                 <small id="userguide" class="form-text text-muted">All fields marked with an asterisk require a valid numeric input.</small>
                 <small id="userguide" class="form-text text-muted">Fields highlighted with green should not be changed normally.</small>
                 <small id="userguide" class="form-text text-muted">Very important to double-check fields highlighted in red.</small>
@@ -157,51 +157,51 @@
         <h3 id="calculatedVolumes">Calculated Volumes</h3>
 
         <label for="calcstandalg" class='my-2'>Standard alginate (µL):</label>
-        <input type="number" id="calcstandalg" class="form-control my-1 bolded" aria-describedby="calcstandalg" disabled>
+        <input type="number" id="calcstandalg" class="form-control my-1 newbolded" aria-describedby="calcstandalg" style="background-color: #eeecec;" disabled>
         <label for="calcrgdalg" class='my-2'>RGD-alginate (µL):</label>
-        <input type="number" id="calcrgdalg" class="form-control my-1 bolded" aria-describedby="calcrgdalg"disabled>
+        <input type="number" id="calcrgdalg" class="form-control my-1 newbolded" aria-describedby="calcrgdalg" style="background-color: #eeecec;" disabled>
         <label for="calccollagen" class='my-2'>Collagen (µL):</label>
-        <input type="number" id="calccollagen" class="form-control my-1 bolded" aria-describedby="calccollagen" disabled>
+        <input type="number" id="calccollagen" class="form-control my-1 newbolded" aria-describedby="calccollagen" style="background-color: #eeecec;" disabled>
         <label for="calcfibrinogen" class='my-2'>Fibrinogen (µL):</label>
-        <input type="number" id="calcfibrinogen" class="form-control my-1 bolded" aria-describedby="calcfibrinogen" disabled>
+        <input type="number" id="calcfibrinogen" class="form-control my-1 newbolded" aria-describedby="calcfibrinogen" style="background-color: #eeecec;" disabled>
         <label for="calcwater" class='my-2'>Water (µL):</label>
-        <input type="number" id="calcwater" class="form-control my-1 bolded" aria-describedby="calcwater" disabled>
+        <input type="number" id="calcwater" class="form-control my-1 newbolded" aria-describedby="calcwater" style="background-color: #eeecec;" disabled>
         <label for="calcbicarb" class='my-2'>5% Bicarbonate (µL):</label>
-        <input type="number" id="calcbicarb" class="form-control my-1 bolded" aria-describedby="calcbicarb" disabled>
+        <input type="number" id="calcbicarb" class="form-control my-1 newbolded" aria-describedby="calcbicarb" style="background-color: #eeecec;" disabled>
         <label for="calcnacl" class='my-2'>1.5 M NaCl (µL):</label>
-        <input type="number" id="calcnacl" class="form-control my-1 bolded" aria-describedby="calcnacl" disabled>
+        <input type="number" id="calcnacl" class="form-control my-1 newbolded" aria-describedby="calcnacl" style="background-color: #eeecec;" disabled>
         <h3 class='my-4'>Actual Volumes (Standard Alginate)</h3>
             <label for="actustandalg" class='my-2'>Standard alginate (µL):</label>
-            <input type="number" id="actustandalg" class="form-control my-1" placeholder='Enter alginate volume actually pipetted' aria-describedby="actustandalg" required>
+            <input type="number" id="actustandalg" class="form-control my-1 newbolded" placeholder='Enter alginate volume actually pipetted' aria-describedby="actustandalg" required>
             <label for="acturgdalg" class='my-2'>RGD-alginate (µL):</label>
-            <input type="number" id="acturgdalg" class="form-control my-1" aria-describedby="acturgdalg"disabled>
+            <input type="number" id="acturgdalg" class="form-control my-1 newbolded" aria-describedby="acturgdalg" style="background-color: #eeecec;" readonly>
             <label for="actcollagen" class='my-2'>Collagen (µL):</label>
-            <input type="number" id="actcollagen" class="form-control my-1" aria-describedby="actcollagen" disabled>
+            <input type="number" id="actcollagen" class="form-control my-1 newbolded" aria-describedby="actcollagen" style="background-color: #eeecec;" readonly>
             <label for="actfibrinogen" class='my-2'>Fibrinogen (µL):</label>
-            <input type="number" id="actfibrinogen" class="form-control my-1" aria-describedby="actfibrinogen" disabled>
+            <input type="number" id="actfibrinogen" class="form-control my-1 newbolded" aria-describedby="actfibrinogen" style="background-color: #eeecec;" readonly>
             <label for="actwater" class='my-2'>Water (µL):</label>
-            <input type="number" id="actwater" class="form-control my-1" aria-describedby="actwater" disabled>
+            <input type="number" id="actwater" class="form-control my-1 newbolded" aria-describedby="actwater" style="background-color: #eeecec;" readonly>
             <label for="actbicarb" class='my-2'>5% Bicarbonate (µL):</label>
-            <input type="number" id="actbicarb" class="form-control my-1" aria-describedby="actbicarb" disabled>
+            <input type="number" id="actbicarb" class="form-control my-1 newbolded" aria-describedby="actbicarb" style="background-color: #eeecec;" readonly>
             <label for="actnacl" class='my-2'>1.5 M NaCl (µL):</label>
-            <input type="number" id="actnacl" class="form-control my-1" aria-describedby="actnacl" disabled>
+            <input type="number" id="actnacl" class="form-control my-1 newbolded" aria-describedby="actnacl" style="background-color: #eeecec;" readonly>
             <label for="totalcalvol" class='my-2'>Total volume (µL):</label>
-            <input type="number" id="totalcalvol" class="form-control-plaintext my-1" aria-describedby="totalcalvol" readonly>
+            <input type="number" id="totalcalvol" class="form-control-plaintext my-1" aria-describedby="totalcalvol" style="background-color: #eeecec;" readonly>
                     <h3 class='my-4'>Actual Volumes (RGD-Alginate)</h3>
                     <label for="secactustdalg" class='my-2'>Standard alginate (µL):</label>
-            <input type="number" id="secactustdalg" class="form-control my-1" aria-describedby="secactustdalg" disabled>
+            <input type="number" id="secactustdalg" class="form-control my-1 newbolded" aria-describedby="secactustdalg" style="background-color: #eeecec;" readonly>
             <label for="secacturgdalg" class='my-2'>RGD-alginate (µL):</label>
-            <input type="number" id="secacturgdalg" class="form-control my-1" placeholder='Enter RGD-alginate volume pipetted' aria-describedby="secacturgdalg" required>
+            <input type="number" id="secacturgdalg" class="form-control my-1 newbolded" placeholder='Enter RGD-alginate volume pipetted' aria-describedby="secacturgdalg" required>
             <label for="secactucollagen" class='my-2'>Collagen (µL):</label>
-            <input type="number" id="secactucollagen" class="form-control my-1" aria-describedby="secactucollagen" disabled>
+            <input type="number" id="secactucollagen" class="form-control my-1 newbolded" aria-describedby="secactucollagen" style="background-color: #eeecec;" readonly>
             <label for="secactufibrinogen" class='my-2'>Fibrinogen (µL):</label>
-            <input type="number" id="secactufibrinogen" class="form-control my-1" aria-describedby="secactufibrinogen" disabled>
+            <input type="number" id="secactufibrinogen" class="form-control my-1 newbolded" aria-describedby="secactufibrinogen" style="background-color: #eeecec;" readonly>
             <label for="secactwater" class='my-2'>Water (µL):</label>
-            <input type="number" id="secactwater" class="form-control my-1" aria-describedby="secactwater" disabled>
+            <input type="number" id="secactwater" class="form-control my-1 newbolded" aria-describedby="secactwater" style="background-color: #eeecec;" readonly>
             <label for="secactbicarb" class='my-2'>5% Bicarbonate (µL):</label>
-            <input type="number" id="secactbicarb" class="form-control my-1" aria-describedby="secactbicarb" disabled>
+            <input type="number" id="secactbicarb" class="form-control my-1 newbolded" aria-describedby="secactbicarb" style="background-color: #eeecec;" readonly>
             <label for="secactnacl" class='my-2'>1.5 M NaCl (µL):</label>
-            <input type="number" id="secactnacl" class="form-control my-1" aria-describedby="secactnacl" disabled>
+            <input type="number" id="secactnacl" class="form-control my-1 newbolded" aria-describedby="secactnacl" style="background-color: #eeecec;" readonly>
             <label for="totalrgdvol" class='my-2'>Total volume (µL):</label>
             <input type="number" id="totalrgdvol" class="form-control-plaintext my-1" aria-describedby="totalrgdvol" readonly>
             <input type="button" name="previous" class="btn-info btn-block back action-button" value="Back to Internal Calculations" />
@@ -212,13 +212,7 @@
 
 
     </fieldset>
-    <!--
-    <div class="tab">Login Info:
-      <p><input placeholder="Username..." oninput="this.className = ''"></p>
-      <p><input placeholder="Password..." oninput="this.className = ''"></p>
-    </div>
-    -->
-  
+   
     
     
     </form>
@@ -231,10 +225,11 @@
              The dilution calculator also corrected for micro-volume errors associated with pipetting viscous alginates by recalculating total volumes based on actual pipetted volumes. 
              This ensured standardization and significantly minimized variations between print runs.</p>
     </div>
-       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src='./resources/script/script.js'></script>
   </body>
