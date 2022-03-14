@@ -4,7 +4,10 @@
  } 
  body {
   background-color: #d1cfcf !important;
+  font-family: 'Lato', sans-serif !important;
+
 }
+
 
 * {
   box-sizing: border-box;
@@ -88,10 +91,14 @@
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+.rotate:hover{
+  font-size: 1.8rem !important;
+ 
+}
 
 a:hover {
-  text-decoration: underline;
   font-weight: bold;
+  font-size: 1.1rem !important;
 }
 
 ::-webkit-input-placeholder {
@@ -165,7 +172,9 @@ a:hover {
   outline: solid 2px red;
 }
 
-
+#about{
+  line-height: 2.1;
+}
 
 @media (max-width: 1120px) {
   #regForm fieldset {
@@ -178,6 +187,13 @@ a:hover {
     width: 120%;
     margin: 0 auto;
     left: -10%;
+  }
+  #about {
+    width: 100% !important
+  }
+  #about p{
+    font-size: 1.1rem !important
+  }
   }
   @media (max-width: 640px) {
     #regForm fieldset {
@@ -198,6 +214,12 @@ a:hover {
   h1{
     font-size: 1.85rem!important;
   }
+  #about {
+    width: 100% !important
+  }
+  #about p{
+    font-size: 0.9rem !important
+  }
 }
 @media (max-width: 460px) {
   #regForm fieldset {
@@ -207,5 +229,7 @@ a:hover {
   }
  
 }
-}
+
+
+
 /*# sourceMappingURL=style.css.map */

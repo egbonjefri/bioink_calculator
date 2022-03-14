@@ -206,32 +206,36 @@ $(document).ready(function(){
    });
    
    function alginateError() {
-      if (inputfinalginateconc === '') {
-         $('.alginateError').show();
-         $('.inpfinalg').addClass('errorActive');
-          $("#inputinialginateconc").get(0).scrollIntoView();
-         
-  }
-  else if (inputfinalginateconc <= 0) {
-     $('.alginateError').html('You need to enter a number greater than zero.');
-     $('.alginateError').show();
-     $('.inpfinalg').addClass('errorActive');
-     $("#inputinialginateconc").get(0).scrollIntoView();
-  }
-  else if (inputfinalginateconc > inputinialginateconc) {
-      $('.alginateError').html('Final Alginate concentration cannot be greater than initial.');
-      $('.alginateError').show();
-      $('.inpfinalg').addClass('errorActive');
-      $("#inputinialginateconc").get(0).scrollIntoView();
-  
-  
-  }
-  else {
-     $('.inpfinalg').removeClass('errorActive');
-     $('.alginateError').hide(); 
-     return true
-     
-  }
+      let blank = 0;
+      blank += (inputfinalginateconc === '') ? 1 : 0;
+      blank += (inputfinalginateconc <= 0) ? 4 : 0;
+      blank += (inputfinalginateconc >= inputinialginateconc) ? 3 : 0;
+      switch (blank) {
+         case 5:
+            $('.alginateError').show();
+            $('.inpfinalg').addClass('errorActive');
+            $("#inputfinalginateconc").shake();
+             $("#inputinialginateconc").get(0).scrollIntoView();
+           return false;
+           case 4:
+            $('.alginateError').html('You need to enter a number greater than zero.');
+            $('.alginateError').show();
+            $('.inpfinalg').addClass('errorActive');
+            $("#inputfinalginateconc").shake();
+            $("#inputinialginateconc").get(0).scrollIntoView();
+            return false;
+            case 3:
+            $('.alginateError').html('Final Alginate concentration cannot be greater than initial.');
+            $('.alginateError').show();
+            $('.inpfinalg').addClass('errorActive');
+            $("#inputfinalginateconc").shake();
+            $("#inputinialginateconc").get(0).scrollIntoView();
+            return false;
+            default:
+            $('.inpfinalg').removeClass('errorActive');
+            $('.alginateError').hide(); 
+            return true
+       } 
    }
   
    function rgdError() {
@@ -239,12 +243,14 @@ $(document).ready(function(){
          $('.rgdError').show();
          $('.inpfinrgd').addClass('errorActive');
          $("#inputinirgdcont").get(0).scrollIntoView();
+         $("#inputfinrgdcont").shake();       
   }
       else if (inputfinrgdcont <= 0) {
       $('.rgdError').html('You need to enter a number greater than zero.');
        $('.rgdError').show();
        $('.inpfinalg').addClass('errorActive');
        $("#inputinirgdcont").get(0).scrollIntoView();
+       $("#inputfinrgdcont").shake();       
   }
   else {
      $('.inpfinrgd').removeClass('errorActive');
@@ -258,6 +264,7 @@ $(document).ready(function(){
          $('.iniFibError').show();
          $('.inpinifib').addClass('errorActive');
          $("#inputrgdbiccont").get(0).scrollIntoView();
+         $("#inputinifibconc").shake();       
   }
  
   else if (inputinifibconc <= 0) {
@@ -265,6 +272,8 @@ $(document).ready(function(){
      $('.iniFibError').show();
      $('.inpinifib').addClass('errorActive');
      $("#inputrgdbiccont").get(0).scrollIntoView();
+     $("#inputinifibconc").shake();       
+     
   }
   else {
      $('.inpinifib').removeClass('errorActive');
@@ -274,32 +283,37 @@ $(document).ready(function(){
    }
   
    function finFibError() {
-      if (inputfinfibconc >= inputinifibconc) {
-         $('.finFibError').html('Final Fibrinogen concentration cannot be greater than initial.');
+      let a = Number(inputfinfibconc);
+      let blank = 0;
+   blank += (inputfinfibconc === '') ? 1 : 0;
+   blank += (inputfinfibconc <= 0) ? 4 : 0;
+   blank += (a > inputinifibconc) ? 3 : 0;
+   switch (blank) {
+      case 5:
          $('.finFibError').show();
          $('.inpfinfib').addClass('errorActive');
+         $("#inputfinfibconc").shake();
          $("#inputinifibconc").get(0).scrollIntoView();
-      }
-         
- 
-   if (inputfinfibconc === '') {
-      $('.finFibError').show();
-      $('.inpfinfib').addClass('errorActive');
-      $("#inputinifibconc").get(0).scrollIntoView();
-  }
-  
-  else if (inputfinfibconc <= 0) {
-     $('.finFibError').html('You need to enter a number greater than zero.');
-     $('.finFibError').show();
-     $('.inpfinfib').addClass('errorActive');
-     $("#inputinifibconc").get(0).scrollIntoView();
-  }
- 
-  else {
-     $('.inpfinfib').removeClass('errorActive');
-     $('.finFibError').hide(); 
-     return true
-  }
+        return false;
+        case 4:
+         $('.finFibError').html('You need to enter a number greater than zero.');
+         $('.finFibError').show();
+         $('.inpfinfib').addClass('errorActive');
+         $("#inputfinfibconc").shake();
+         $("#inputinifibconc").get(0).scrollIntoView();
+         return false;
+         case 3:
+            $('.finFibError').html('Final Fibrinogen concentration cannot be greater than initial.');
+            $('.finFibError').show();
+            $('.inpfinfib').addClass('errorActive');
+           $("#inputfinfibconc").shake();
+            $("#inputinifibconc").get(0).scrollIntoView();
+         return false;
+         default:
+            $('.inpfinfib').removeClass('errorActive');
+            $('.finFibError').hide(); 
+            return true
+    }
    }
   
   
@@ -308,18 +322,23 @@ $(document).ready(function(){
          $('.collagenError').show();
          $('.inpfincol').addClass('errorActive');
          $("#inputinicolconc").get(0).scrollIntoView();
+         $("#inputfincolconc").shake();       
   }
   else if (inputfincolconc <= 0) {
      $('.collagenError').html('You need to enter a number greater than zero.');
      $('.collagenError').show();
      $('.inpfincol').addClass('errorActive');
      $("#inputinicolconc").get(0).scrollIntoView();
+     $("#inputfincolconc").shake();       
+
   }
   else if (inputfincolconc > inputinicolconc) {
       $('.collagenError').html('Final collagen concentration cannot be greater than initial.');
       $('.collagenError').show();
       $('.inpfincol').addClass('errorActive');
       $("#inputinicolconc").get(0).scrollIntoView();
+      $("#inputfincolconc").shake();       
+
   }
   else {
      $('.inpfincol').removeClass('errorActive');

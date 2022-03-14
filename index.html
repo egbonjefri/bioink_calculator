@@ -8,12 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>Bio-ink Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap" rel="stylesheet">
+    <title>Alginate Dilution Calculator</title>
   </head>
   <body>
 
-    <h1 class='text-center my-1'>Bio-ink/Alginate Dilution Calculator</h1>
+    <a class='text-decoration-none text-dark' href='./index.html'><h1 class='text-center my-1'>Alginate Dilution Calculator</h1></a>
     <p class='text-center my-2'><em>Created by <a class="text-decoration-underline text-dark" target='_blank' href="https://twitter.com/osagiej3e">Jeffery Osagie</a> and <a class="text-decoration-underline text-dark" target='_blank' href="https://twitter.com/The_West_Lab">Dr. A. West</a></em></p>
 
 <form id="regForm" class='container my-6 w-50 mx-auto' action="">
@@ -100,7 +102,7 @@
         <input type="number" id="outputrgdneeded" class="form-control-plaintext my-1" aria-describedby="outputrgdneeded" readonly>
         <label for="outputrgdneededmg" class='my-2'>RGD-alginate needed (mg):</label>
         <input type="number" id="outputrgdneededmg" class="form-control-plaintext my-1" aria-describedby="outputrgdneededmg" readonly>
-        <label for="outputrgdneededperc" class='my-2'>RGD alginate concentration (%)</label>
+        <label for="outputrgdneededperc" class='my-2'>RGD alginate concentration (%):</label>
         <input type="number" id="outputrgdneededperc" class="form-control-plaintext my-1" aria-describedby="outputrgdneededperc" readonly>
         <label for="outputalgiconc" class='my-2'>Standard alginate concentration (%):</label>
         <input type="number" id="outputalgiconc" class="form-control-plaintext my-1" aria-describedby="outputalgiconc" readonly>
@@ -216,15 +218,46 @@
     
     
     </form>
+<br>
+<br>
+    <div id='about' class="my-6 text-justify w-75 mx-auto">
+        <h2 class='text-center text-dark my-6'>About calculator</h2>
+        <br>
+        <p class='mx-5 text-muted' style="font-size: 1.25rem;">This calculator precisely estimates the volume of salt buffers and water
+          required to neutralize the acid from the collagen component of bio-inks and achieve physiologic tonicity. 
+          <br>
+            The required inputs for the calculator are the desired final volume of bio-ink, and the stock and final concentrations of each matrix component. 
+            With these inputs, the calculator computes the volume of 5% NaHCO<sub>3</sub>, 1.5 M NaCl, and ddH<sub>2</sub>O to achieve final salt concentrations of 
+            145 mM NaCl and 5 mM NaHCO<sub>3</sub>.
+              Micro-volume errors associated with pipetting viscous alginates can also be corrected for by recalculating total volumes based on actual pipetted volumes,
+              ensuring standardization and significantly minimizing variations between print runs.</p>
 
-    <div class="my-5">
-        <h3 class='text-center my-6'>About calculator</h3>
-        <p class='mx-5'>An Excel based calculator was developed and used to calculate volumes of each component in the bio-ink. 
-            The inputs for the calculator were the desired final volume of bio-ink, and the stock and final concentrations of each matrix component. 
-            The calculator then calculated the volume of 7.5% NaHCO3, 1.5 M NaCl, and ddH2O to precisely neutralise the acid from the collagen and achieve final salt concentrations of 145 mM NaCl and 5 mM NaHCO3.
-             The dilution calculator also corrected for micro-volume errors associated with pipetting viscous alginates by recalculating total volumes based on actual pipetted volumes. 
-             This ensured standardization and significantly minimized variations between print runs.</p>
-    </div>
+    <br>
+    <br>
+    <h3 class="text-center">How to calculate desired volumes</h3>
+    <br>
+    <p class='mx-5 text-justify text-muted' style="font-size: 1.25rem;">Final volumes can be computed from the following formula:<br>
+      <code class="code text-light bg-dark">Volume of stock to be used = (Total volume to prepare * Desired concentration)/Stock concentration</code>
+    </p>
+
+  </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+<footer class="footer float-right">
+  Copyright 2022, The West Lab, University of Manitoba
+</footer>
+
+
+
+
+
+
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -232,5 +265,7 @@
     crossorigin="anonymous"></script>    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src='./resources/script/script.js'></script>
+    <script src="./resources/script/shake.js"></script>
+
   </body>
 </html>
