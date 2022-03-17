@@ -1,4 +1,26 @@
-
+$.fn.shake = function(interval = 100){
+   this.addClass('shaking');
+   this.css('transition', 'all ' + (interval / 100).toString() + 's');
+   setTimeout(() => {
+       this.css('transform', 'translateX(-50%)');
+   }, interval * 0);
+   setTimeout(() => {
+       this.css('transform', 'translateX(50%)');
+   }, interval * 1);
+   setTimeout(() => {
+       this.css('transform', 'translateX(-25%)');
+   }, interval * 2);
+   setTimeout(() => {
+       this.css('transform', 'translateX(25%)');
+   }, interval * 3);
+   setTimeout(() => {
+       this.css('transform', 'translateX(-7%)');
+   }, interval * 4);
+   setTimeout(() => {
+       this.css('transform', 'translateX(0%)');
+   }, interval * 5);
+   this.removeClass('shaking');
+};
 
 $(document).ready(function(){
   
@@ -69,6 +91,13 @@ $(document).ready(function(){
  let costofcollagen;
  
  
+let calstdalgmL;
+let calrgdalgmL;
+let calcolmL;
+let calfibmL;
+let calbicarmL;
+let calwatermL;
+let calnaclmL;
  
  let calcstandalg;
  let calcrgdalg;
@@ -182,13 +211,13 @@ $(document).ready(function(){
      outputsodiumtoadd = outputsodiumneeded - outputsodiumadded;
      calcnacl = outputsodiumtoadd/1500;
      calcwater = totalVolmL-(calcstandalg+calcrgdalg+calccollagen+calcfibrinogen+calcbicarb+calcnacl);
-     $('#calcstandalg').val(Math.floor(calcstandalg*1000));
-     $('#calcrgdalg').val(Math.floor(calcrgdalg*1000));
-     $('#calccollagen').val(Math.floor(calccollagen*1000));
-     $('#calcfibrinogen').val(Math.floor(calcfibrinogen*1000));
-     $('#calcbicarb').val(Math.floor(calcbicarb*1000));
-     $('#calcnacl').val(Math.floor(calcnacl*1000));
-     $('#calcwater').val(Math.floor(calcwater*1000));
+     $('#calcstandalg').val((calcstandalg*1000).toFixed(0));
+     $('#calcrgdalg').val((calcrgdalg*1000).toFixed(0));
+     $('#calccollagen').val((calccollagen*1000).toFixed(0));
+     $('#calcfibrinogen').val((calcfibrinogen*1000).toFixed(0));
+     $('#calcbicarb').val((calcbicarb*1000).toFixed(1));
+     $('#calcnacl').val((calcnacl*1000).toFixed(0));
+     $('#calcwater').val((calcwater*1000).toFixed(0));
       $('#outputfinbicarbneeded').val(outputfinbicarbneeded.toFixed(2));
       $('#ouputcolacid').val(ouputcolacid.toFixed(2));
       $('#ouputmatrixbicarb').val(ouputmatrixbicarb.toFixed(2));
@@ -196,10 +225,13 @@ $(document).ready(function(){
       $('#outputsodiumadded').val(outputsodiumadded.toFixed(2));
       $('#outputsodiumneeded').val(outputsodiumneeded.toFixed(2));
       $('#outputsodiumtoadd').val(outputsodiumtoadd.toFixed(2));
- 
-    
-    //  $('#totalcalvol').val(Math.floor(totalcalvol*1000));  
-    
+       calstdalgmL = (calcstandalg*1000).toFixed(0);
+       calrgdalgmL = (calcrgdalg*1000).toFixed(0);
+       calcolmL = (calccollagen*1000).toFixed(0);
+       calfibmL = (calcfibrinogen*1000).toFixed(0);
+       calbicarmL = (calcbicarb*1000).toFixed(1);
+       calwatermL = (calcwater*1000).toFixed(0);
+       calnaclmL = (calcnacl*1000).toFixed(0);    
    
       event.preventDefault();
  
@@ -225,7 +257,7 @@ $(document).ready(function(){
             $("#inputinialginateconc").get(0).scrollIntoView();
             return false;
             case 3:
-            $('.alginateError').html('Final Alginate concentration cannot be greater than initial.');
+            $('.alginateError').html(`Final alginate concentration cannot be greater than initial, please enter a value less than ${inputinialginateconc}.`);
             $('.alginateError').show();
             $('.inpfinalg').addClass('errorActive');
             $("#inputfinalginateconc").shake();
@@ -303,7 +335,7 @@ $(document).ready(function(){
          $("#inputinifibconc").get(0).scrollIntoView();
          return false;
          case 3:
-            $('.finFibError').html('Final Fibrinogen concentration cannot be greater than initial.');
+            $('.finFibError').html(`Final Fibrinogen concentration cannot be greater than initial, please enter a value less than ${inputinifibconc}.`);
             $('.finFibError').show();
             $('.inpfinfib').addClass('errorActive');
            $("#inputfinfibconc").shake();
@@ -315,37 +347,42 @@ $(document).ready(function(){
             return true
     }
    }
-  
-  
+   
    function collagenError() {
-      if (inputfincolconc === '') {
+   let a = Number(inputfincolconc);
+   let blank = 0;
+   blank += (inputfincolconc === '') ? 1 : 0;
+   blank += (inputfincolconc <= 0) ? 4 : 0;
+   blank += (a > inputinicolconc) ? 3 : 0;
+   switch (blank) {  
+      case 5:
          $('.collagenError').show();
          $('.inpfincol').addClass('errorActive');
          $("#inputinicolconc").get(0).scrollIntoView();
-         $("#inputfincolconc").shake();       
-  }
-  else if (inputfincolconc <= 0) {
-     $('.collagenError').html('You need to enter a number greater than zero.');
-     $('.collagenError').show();
-     $('.inpfincol').addClass('errorActive');
-     $("#inputinicolconc").get(0).scrollIntoView();
-     $("#inputfincolconc").shake();       
+         $("#inputfincolconc").shake();
+         return false;
+      case 4:
+         $('.collagenError').html('You need to enter a number greater than zero.');
+         $('.collagenError').show();
+         $('.inpfincol').addClass('errorActive');
+         $("#inputinicolconc").get(0).scrollIntoView();
+         $("#inputfincolconc").shake();  
+         return false;
+      case 3:
+         $('.collagenError').html(`Final collagen concentration cannot be greater than initial, please enter a value less than ${inputinicolconc}.`);
+         $('.collagenError').show();
+         $('.inpfincol').addClass('errorActive');
+         $("#inputinicolconc").get(0).scrollIntoView();
+         $("#inputfincolconc").shake();  
+         return false;
+      default:
+         $('.inpfincol').removeClass('errorActive');
+         $('.collagenError').hide(); 
+         return true
 
-  }
-  else if (inputfincolconc > inputinicolconc) {
-      $('.collagenError').html('Final collagen concentration cannot be greater than initial.');
-      $('.collagenError').show();
-      $('.inpfincol').addClass('errorActive');
-      $("#inputinicolconc").get(0).scrollIntoView();
-      $("#inputfincolconc").shake();       
-
-  }
-  else {
-     $('.inpfincol').removeClass('errorActive');
-     $('.collagenError').hide(); 
-     return true
-  }
    }
+   }
+
   
  
  
@@ -362,12 +399,12 @@ $(document).ready(function(){
   
  
  
-     $('#acturgdalg').val(Math.floor(acturgdalg));
-     $('#actcollagen').val(Math.floor(actcollagen));    
-     $('#actfibrinogen').val(Math.floor(actfibrinogen));    
-     $('#actwater').val(Math.floor(actwater));    
-     $('#actbicarb').val(Math.floor(actbicarb));    
-     $('#actnacl').val(Math.floor(actnacl)); 
+     $('#acturgdalg').val((acturgdalg).toFixed(0));
+     $('#actcollagen').val((actcollagen).toFixed(0));    
+     $('#actfibrinogen').val((actfibrinogen).toFixed(0));    
+     $('#actwater').val((actwater).toFixed(0));    
+     $('#actbicarb').val((actbicarb).toFixed(0));    
+     $('#actnacl').val((actnacl).toFixed(0)); 
      $('#totalcalvol').val(Math.floor(totalcalvol));   
  });
  
@@ -383,15 +420,67 @@ $(document).ready(function(){
      secactnacl = (calcnacl*this.value)/calcrgdalg;
      totalrgdvol = a+secactustdalg+secactucollagen+secactufibrinogen+secactwater+secactbicarb+secactnacl;
  
-     $('#secactustdalg').val(Math.floor(secactustdalg));
-     $('#secactucollagen').val(Math.floor(secactucollagen));    
-     $('#secactufibrinogen').val(Math.floor(secactufibrinogen));    
-     $('#secactwater').val(Math.floor(secactwater));    
-     $('#secactbicarb').val(Math.floor(secactbicarb));    
-     $('#secactnacl').val(Math.floor(secactnacl)); 
+     $('#secactustdalg').val((secactustdalg).toFixed(0));
+     $('#secactucollagen').val((secactucollagen).toFixed(0));    
+     $('#secactufibrinogen').val((secactufibrinogen).toFixed(0));    
+     $('#secactwater').val((secactwater).toFixed(0));    
+     $('#secactbicarb').val((secactbicarb).toFixed(0));    
+     $('#secactnacl').val((secactnacl).toFixed(0)); 
      $('#totalrgdvol').val(Math.floor(totalrgdvol));  
  });
+ $("#customSwitch1").on("click", function() {
+   let alginateText = $('#stdalglab');
+   let rgdText = $('#rgdalglab');
+   let collagenText = $('#colllab');
+   let fibrinogenText = $('#fibrolab');
+   let waterText = $('#waterlab');
+   let bicarbText = $('#bicarblab');
+   let naclText = $('#nacllab');
+
+   let blah = (alginateText.text() == alginateText.data("text-swap")) ? 0 : 1;
+
+   switch (blah) {
+      case 0:
+         alginateText.text(alginateText.data("text-original"));
+         $('#calcstandalg').val(calstdalgmL);
+         rgdText.text(rgdText.data("text-original"));
+         $('#calcrgdalg').val(calrgdalgmL);
+         collagenText.text(collagenText.data("text-original"));
+         $('#calccollagen').val(calcolmL);
+         fibrinogenText.text(fibrinogenText.data("text-original"));
+         $('#calcfibrinogen').val(calfibmL);
+         waterText.text(waterText.data("text-original"));
+         $('#calcwater').val(calwatermL);
+         bicarbText.text(bicarbText.data("text-original"));
+         $('#calcbicarb').val(calbicarmL);
+         naclText.text(naclText.data("text-original"));
+         $('#calcnacl').val(calnaclmL);
+               break;
+     default:
+      alginateText.data("text-original", alginateText.text());
+      alginateText.text(alginateText.data("text-swap"));
+      $('#calcstandalg').val(calcstandalg.toFixed(3));
+      rgdText.data("text-original", rgdText.text());
+      rgdText.text(rgdText.data("text-swap"));
+      $('#calcrgdalg').val(calcrgdalg.toFixed(3));
+      collagenText.data("text-original", collagenText.text());
+      collagenText.text(collagenText.data("text-swap"));
+      $('#calccollagen').val(calccollagen.toFixed(3));
+      fibrinogenText.data("text-original", fibrinogenText.text());
+      fibrinogenText.text(fibrinogenText.data("text-swap"));
+      $('#calcfibrinogen').val(calcfibrinogen.toFixed(3));
+      waterText.data("text-original", waterText.text());
+      waterText.text(waterText.data("text-swap"));
+      $('#calcwater').val(calcwater.toFixed(3));
+      bicarbText.data("text-original", bicarbText.text());
+      bicarbText.text(bicarbText.data("text-swap"));
+      $('#calcbicarb').val(calcbicarb.toFixed(3));
+      naclText.data("text-original", naclText.text());
+      naclText.text(naclText.data("text-swap"));
+      $('#calcnacl').val(calcnacl.toFixed(3));
+   }
  
+ });
  
 var current_fs, next_fs, previous_fs;
 var animating;
