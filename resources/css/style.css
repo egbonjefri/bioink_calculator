@@ -105,7 +105,9 @@ a:hover {
   font-style: italic;
   font-family: Roboto, "Font Awesome 5 Pro", sans-serif;
 }
-
+input:focus::placeholder {
+  opacity: 0;
+}
 ::-webkit-scrollbar {
   width: 10px;
 }

@@ -238,15 +238,17 @@ let calnaclmL;
    });
    
    function alginateError() {
+      let a = Number(inputfinalginateconc);
       let blank = 0;
       blank += (inputfinalginateconc === '') ? 1 : 0;
       blank += (inputfinalginateconc <= 0) ? 4 : 0;
-      blank += (inputfinalginateconc >= inputinialginateconc) ? 3 : 0;
+      blank += (a >= inputinialginateconc) ? 3 : 0;
       switch (blank) {
          case 5:
             $('.alginateError').show();
             $('.inpfinalg').addClass('errorActive');
             $("#inputfinalginateconc").shake();
+            $("#inputfinalginateconc").focus();
              $("#inputinialginateconc").get(0).scrollIntoView();
            return false;
            case 4:
@@ -275,6 +277,7 @@ let calnaclmL;
          $('.rgdError').show();
          $('.inpfinrgd').addClass('errorActive');
          $("#inputinirgdcont").get(0).scrollIntoView();
+         $("#inputfinrgdcont").focus();
          $("#inputfinrgdcont").shake();       
   }
       else if (inputfinrgdcont <= 0) {
@@ -296,6 +299,7 @@ let calnaclmL;
          $('.iniFibError').show();
          $('.inpinifib').addClass('errorActive');
          $("#inputrgdbiccont").get(0).scrollIntoView();
+         $("#inputinifibconc").focus();
          $("#inputinifibconc").shake();       
   }
  
@@ -325,6 +329,7 @@ let calnaclmL;
          $('.finFibError').show();
          $('.inpfinfib').addClass('errorActive');
          $("#inputfinfibconc").shake();
+         $("#inputfinfibconc").focus();
          $("#inputinifibconc").get(0).scrollIntoView();
         return false;
         case 4:
@@ -360,6 +365,7 @@ let calnaclmL;
          $('.inpfincol').addClass('errorActive');
          $("#inputinicolconc").get(0).scrollIntoView();
          $("#inputfincolconc").shake();
+         $("#inputfincolconc").focus();
          return false;
       case 4:
          $('.collagenError').html('You need to enter a number greater than zero.');
@@ -550,7 +556,9 @@ $(".back").click(function () {
 
   current_fs = $(this).parent();
   previous_fs = $(this).parent().prev();
-  $(".circle").eq($("fieldset").index(next_fs)).addClass("active");
+  $(".circle")
+  .eq($("fieldset").index(current_fs))
+  .removeClass("active");
   previous_fs.show();
   current_fs.hide();
   $("#internalcalc").get(0).scrollIntoView();
