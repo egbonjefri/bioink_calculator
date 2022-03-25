@@ -244,7 +244,7 @@ let calnaclmL;
       blank += (inputfinalginateconc < 0) ? 4 : 0;
       blank += (a >= inputinialginateconc) ? 3 : 0;
       switch (blank) {
-         case 5:
+         case 1:
             $('.alginateError').show();
             $('.inpfinalg').addClass('errorActive');
             $("#inputfinalginateconc").shake();
@@ -325,7 +325,7 @@ let calnaclmL;
    blank += (inputfinfibconc < 0) ? 4 : 0;
    blank += (a > inputinifibconc) ? 3 : 0;
    switch (blank) {
-      case 5:
+      case 1:
          $('.finFibError').show();
          $('.inpfinfib').addClass('errorActive');
          $("#inputfinfibconc").shake();
@@ -360,7 +360,7 @@ let calnaclmL;
    blank += (inputfincolconc < 0) ? 4 : 0;
    blank += (a > inputinicolconc) ? 3 : 0;
    switch (blank) {  
-      case 5:
+      case 1:
          $('.collagenError').show();
          $('.inpfincol').addClass('errorActive');
          $("#inputinicolconc").get(0).scrollIntoView();
