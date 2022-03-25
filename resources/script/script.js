@@ -241,7 +241,7 @@ let calnaclmL;
       let a = Number(inputfinalginateconc);
       let blank = 0;
       blank += (inputfinalginateconc === '') ? 1 : 0;
-      blank += (inputfinalginateconc <= 0) ? 4 : 0;
+      blank += (inputfinalginateconc < 0) ? 4 : 0;
       blank += (a >= inputinialginateconc) ? 3 : 0;
       switch (blank) {
          case 5:
@@ -252,7 +252,7 @@ let calnaclmL;
              $("#inputinialginateconc").get(0).scrollIntoView();
            return false;
            case 4:
-            $('.alginateError').html('You need to enter a number greater than zero.');
+            $('.alginateError').html('You need to enter a number greater than or equal to zero.');
             $('.alginateError').show();
             $('.inpfinalg').addClass('errorActive');
             $("#inputfinalginateconc").shake();
@@ -280,8 +280,8 @@ let calnaclmL;
          $("#inputfinrgdcont").focus();
          $("#inputfinrgdcont").shake();       
   }
-      else if (inputfinrgdcont <= 0) {
-      $('.rgdError').html('You need to enter a number greater than zero.');
+      else if (inputfinrgdcont < 0) {
+      $('.rgdError').html('You need to enter a number greater than or equal to zero.');
        $('.rgdError').show();
        $('.inpfinalg').addClass('errorActive');
        $("#inputinirgdcont").get(0).scrollIntoView();
@@ -322,7 +322,7 @@ let calnaclmL;
       let a = Number(inputfinfibconc);
       let blank = 0;
    blank += (inputfinfibconc === '') ? 1 : 0;
-   blank += (inputfinfibconc <= 0) ? 4 : 0;
+   blank += (inputfinfibconc < 0) ? 4 : 0;
    blank += (a > inputinifibconc) ? 3 : 0;
    switch (blank) {
       case 5:
@@ -333,7 +333,7 @@ let calnaclmL;
          $("#inputinifibconc").get(0).scrollIntoView();
         return false;
         case 4:
-         $('.finFibError').html('You need to enter a number greater than zero.');
+         $('.finFibError').html('You need to enter a number greater than or equal to zero.');
          $('.finFibError').show();
          $('.inpfinfib').addClass('errorActive');
          $("#inputfinfibconc").shake();
@@ -357,7 +357,7 @@ let calnaclmL;
    let a = Number(inputfincolconc);
    let blank = 0;
    blank += (inputfincolconc === '') ? 1 : 0;
-   blank += (inputfincolconc <= 0) ? 4 : 0;
+   blank += (inputfincolconc < 0) ? 4 : 0;
    blank += (a > inputinicolconc) ? 3 : 0;
    switch (blank) {  
       case 5:
@@ -368,7 +368,7 @@ let calnaclmL;
          $("#inputfincolconc").focus();
          return false;
       case 4:
-         $('.collagenError').html('You need to enter a number greater than zero.');
+         $('.collagenError').html('You need to enter a number greater than or equal to zero.');
          $('.collagenError').show();
          $('.inpfincol').addClass('errorActive');
          $("#inputinicolconc").get(0).scrollIntoView();
